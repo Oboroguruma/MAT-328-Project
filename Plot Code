@@ -1,0 +1,32 @@
+sns.countplot(x = "Dry Eye Disease", data = eye)
+plt.xlabel("Dry Eye Disease")
+plt.ylabel("Quantity")
+plt.title("Total Number of Dry Eye Disease Cases")
+
+sns.countplot(x = "Sleep quality", hue = "Dry Eye Disease", data = sample)
+plt.xlabel("Sleep Quality")
+plt.ylabel("People")
+plt.title("Dry Eye Disease by Sleep Quality")
+
+sns.countplot(x = "Stress level", hue = "Dry Eye Disease", data = sample)
+plt.xlabel("Stress Level")
+plt.ylabel("People")
+plt.title("Dry Eye Disease by Stress level")
+
+plt.figure(figsize=(15, 3))
+sns.countplot(x = "Weight", hue = "Dry Eye Disease", data = sample)
+plt.xlabel("Weight")
+plt.ylabel("People")
+plt.title("Dry Eye Disease by Weight Groups")
+
+plt.figure(figsize=(15, 3))
+sns.countplot(x = "Age", hue = "Dry Eye Disease", data = sample)
+plt.xlabel("Age")
+plt.ylabel("People")
+plt.title("Dry Eye Disease by Age Groups")
+
+plt.figure(figsize=(20, 3))
+sns.countplot(x = "Average screen time", hue = "Dry Eye Disease", data = sample)
+plt.xlabel("Average Screen Time")
+plt.ylabel("People")
+plt.title("Dry Eye Disease by Avg Screen Time")
