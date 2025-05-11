@@ -1,0 +1,3 @@
+last = dummy.sample(300)
+
+sns.jointplot(x = "Average_screen_time", y = "Dry_Eye_Disease_Y", kind="reg", data = last, truncate=False)
