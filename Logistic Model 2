@@ -9,7 +9,7 @@ false_neg2 = cm2[1][0]
 false_pos2 = cm2[0][1]
 true_pos2 = cm2[1][1]
 
-accuracy2 = (true_pos + true_neg)/len(dummy)
+accuracy2 = (true_pos2 + true_neg2)/len(dummy)
 accuracy2
 
 sensitivity2 = true_pos2/(true_pos2 + false_neg2)
