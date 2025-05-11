@@ -1,1 +1,54 @@
+# N-5
+x = dummy[["Sleep_disorder_Y", "Sleep_duration", "Sleep_quality"]]
+y = dummy["Dry_Eye_Disease_Y"]
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2)
+
+knn5 = KNeighborsClassifier(n_neighbors = 5)
+knn5.fit(x_train, y_train)
+
+y_test_preds = knn5.predict(x_test)
+kcm = confusion_matrix(y_test, y_test_preds)
+kcm
+
+true_neg_kcm = kcm[0][0]
+false_neg_kcm = kcm[1][0]
+false_pos_kcm = kcm[0][1]
+true_pos_kcm = kcm[1][1]
+
+accuracy_kcm = (true_pos_kcm + true_neg_kcm)/len(dummy)
+accuracy_kcm
+
+sensitivity_kcm = true_pos_kcm/(true_pos_kcm + false_neg_kcm)
+sensitivity_kcm
+
+specificity_kcm = true_neg_kcm/(true_neg_kcm + false_pos_kcm)
+specificity_kcm
+
+precision_kcm = true_pos_kcm/(true_pos_kcm + false_pos_kcm)
+precision_kcm
+
+# N-10
+knn10 = KNeighborsClassifier(n_neighbors = 10)
+knn10.fit(x_train, y_train)
+
+y_test_preds2 = knn10.predict(x_test)
+kcm2 = confusion_matrix(y_test, y_test_preds2)
+kcm2
+
+true_neg_kcm2 = kcm2[0][0]
+false_neg_kcm2 = kcm2[1][0]
+false_pos_kcm2 = kcm2[0][1]
+true_pos_kcm2 = kcm2[1][1]
+
+accuracy_kcm2 = (true_pos_kcm2 + true_neg_kcm2)/len(dummy)
+accuracy_kcm2
+
+sensitivity_kcm2 = true_pos_kcm2/(true_pos_kcm2 + false_neg_kcm2)
+sensitivity_kcm2
+
+specificity_kcm2 = true_neg_kcm2/(true_neg_kcm2 + false_pos_kcm2)
+specificity_kcm2
+
+precision_kcm2 = true_pos_kcm2/(true_pos_kcm2 + false_pos_kcm2)
+precision_kcm2
