@@ -1,0 +1,38 @@
+dummy = pd.get_dummies(eye, columns = ["Smart device before bed", "Blue-light filter", "Dry Eye Disease", "Sleep disorder"], drop_first = True)
+
+dummy = dummy.rename(columns={
+    "Average screen time": "Average_screen_time",
+    "Sleep duration": "Sleep_duration",
+    "Dry Eye Disease_Y": "Dry_Eye_Disease_Y",
+    "Sleep quality": "Sleep_quality",
+    "Sleep disorder_Y": "Sleep_disorder_Y",
+    "Blue-light filter_Y": "Blue_light_filter_Y",
+    "Smart device before bed_Y": "Smart_device_before_bed_Y"})
+
+dummy["Dry_Eye_Disease_Y"] = dummy["Dry_Eye_Disease_Y"].astype(int)
+dummy["Sleep_disorder_Y"] = dummy["Sleep_disorder_Y"].astype(int)
+dummy["Blue_light_filter_Y"] = dummy["Blue_light_filter_Y"].astype(int)
+dummy["Smart_device_before_bed_Y"] = dummy["Smart_device_before_bed_Y"].astype(int)
+
+lm = smf.logit("Dry_Eye_Disease_Y ~ Sleep_disorder_Y + Sleep_duration + Sleep_quality", data = dummy).fit()
+lm.summary()
+
+cm = lm.pred_table(0.65)
+cm
+
+true_neg = cm[0][0]
+false_neg = cm[1][0]
+false_pos = cm[0][1]
+true_pos = cm[1][1]
+
+accuracy = (true_pos + true_neg)/len(dummy)
+accuracy
+
+sensitivity = true_pos/(true_pos + false_neg)
+sensitivity
+
+specificity = true_neg/(true_neg + false_pos)
+specificity
+
+precision = true_pos/(true_pos + false_pos)
+precision
