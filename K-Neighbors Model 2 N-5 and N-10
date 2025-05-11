@@ -1,1 +1,54 @@
+# N-5
+x2 = dummy[["Average_screen_time", "Blue_light_filter_Y", "Smart_device_before_bed_Y"]]
+y = dummy["Dry_Eye_Disease_Y"]
 
+x2_train, x2_test, y_train, y_test = train_test_split(x, y, test_size = 0.2)
+
+knn_5 = KNeighborsClassifier(n_neighbors = 5)
+knn_5.fit(x2_train, y_train)
+
+y_test_preds3 = knn_5.predict(x2_test)
+kcm3 = confusion_matrix(y_test, y_test_preds3)
+kcm3
+
+true_neg_kcm3 = kcm3[0][0]
+false_neg_kcm3 = kcm3[1][0]
+false_pos_kcm3 = kcm3[0][1]
+true_pos_kcm3 = kcm3[1][1]
+
+accuracy_kcm3 = (true_pos_kcm3 + true_neg_kcm3)/len(dummy)
+accuracy_kcm3
+
+sensitivity_kcm3 = true_pos_kcm3/(true_pos_kcm3 + false_neg_kcm3)
+sensitivity_kcm3
+
+specificity_kcm3 = true_neg_kcm3/(true_neg_kcm3 + false_pos_kcm3)
+specificity_kcm3
+
+precision_kcm3 = true_pos_kcm3/(true_pos_kcm3 + false_pos_kcm3)
+precision_kcm3
+
+# N-5
+knn_10 = KNeighborsClassifier(n_neighbors = 10)
+knn_10.fit(x2_train, y_train)
+
+y_test_preds4 = knn_10.predict(x2_test)
+kcm4 = confusion_matrix(y_test, y_test_preds4)
+kcm4
+
+true_neg_kcm4 = kcm4[0][0]
+false_neg_kcm4 = kcm4[1][0]
+false_pos_kcm4 = kcm4[0][1]
+true_pos_kcm4 = kcm4[1][1]
+
+accuracy_kcm4 = (true_pos_kcm4 + true_neg_kcm4)/len(dummy)
+accuracy_kcm4
+
+sensitivity_kcm4 = true_pos_kcm4/(true_pos_kcm4 + false_neg_kcm4)
+sensitivity_kcm4
+
+specificity_kcm4 = true_neg_kcm4/(true_neg_kcm4 + false_pos_kcm4)
+specificity_kcm4
+
+precision_kcm4 = true_pos_kcm4/(true_pos_kcm4 + false_pos_kcm4)
+precision_kcm4
